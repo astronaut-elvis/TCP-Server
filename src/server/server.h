@@ -4,7 +4,11 @@
 #include <iostream>
 
 #include <cstdint>
+#include <netinet/tcp.h>
 #include <sys/socket.h>
+#include <unistd.h>
+
+#define DEFAULT_BACKLOG_LENGTH 10
 
 namespace TCPServer {
 
@@ -14,8 +18,10 @@ namespace TCPServer {
     };
 
     typedef struct ServerParamsDef {
-        int  _listen_port = 8000;
-        bool _ipv6 = false;
+        int  _listen_port    = 8000;
+        int  _backlog        = DEFAULT_BACKLOG_LENGTH;
+        bool _ipv6           = false;
+        bool _disable_nagle  = false;
     } ServerParams;
 
     class Server {
@@ -26,15 +32,16 @@ namespace TCPServer {
         Server(const Server&) = delete;
         Server& operator=(const Server&) = delete;
 
-        ServerStatus Setup();
         ServerStatus Run();
 
     private:
-        [[nodiscard]] int _getSocketFd() const;
+        ServerStatus _Setup();
 
-        /*
-         * Parameters
-         */
+        void _sockSetFd();
+        void _sockSetOpt() const;
+        void _sockBindAddr() const;
+        void _sockListen() const;
+
         ServerParams _params;
         int _socket_fd;
     };
