@@ -3,9 +3,6 @@
 #include "server/server.h"
 
 int main() {
-    TCPServer::ServerParams params = {
-        80,
-    };
-
-    TCPServer::Server my_server(params);
+    auto params = std::make_shared<TCPServer::ServerParams>();
+    TCPServer::Server my_server(*params);
 }

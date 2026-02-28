@@ -8,6 +8,7 @@ namespace TCPServer {
             std::cerr << "Error: port must be between 1024 and 65535." << std::endl;
             throw std::runtime_error("Port must be between 1024 and 65535.");
         }
+        _Setup();
     }
 
     Server::~Server() {
