@@ -2,17 +2,17 @@
 
 A lightweight, configurable TCP server written in modern C++20.
 
-Built from scratch using POSIX sockets — no external networking libraries, no frameworks. Just clean, minimal systems code.
+Built from scratch using POSIX sockets - no external networking libraries, no frameworks. Just clean, minimal systems code.
 
 ---
 
 ## Features
 
-- **IPv4 & IPv6** — dual-stack support, switchable via configuration
-- **Configurable** — port, backlog depth, and Nagle's algorithm toggle
-- **RAII resource management** — socket is automatically closed on destruction
-- **Non-copyable design** — prevents accidental resource sharing
-- **Clean error handling** — descriptive exceptions on every failure path
+- **IPv4 & IPv6** - dual-stack support, switchable via configuration
+- **Configurable** - port, backlog depth, and Nagle's algorithm toggle
+- **RAII resource management** - socket is automatically closed on destruction
+- **Non-copyable design** - prevents accidental resource sharing
+- **Clean error handling** - descriptive exceptions on every failure path
 
 ## Project Structure
 
